@@ -2,7 +2,7 @@
 module serializer #(parameter WIDTH = 8) (
 	input 	wire 					CLK,
 	input 	wire 					RST,
-	input 	wire [WIDTH - 1 : 0] 	DATA,
+	input 	wire 		[WIDTH - 1 : 0] 	DATA,
 	input 	wire 					Enable,
 	input 	wire 					Busy,
 	input 	wire 					Data_Valid,
@@ -13,7 +13,7 @@ module serializer #(parameter WIDTH = 8) (
 	localparam MAX_VALUE_WIDTH = (2**$clog2(WIDTH) - 1);
 
 	reg [$clog2(WIDTH) - 1 : 0] Q;
-	reg [7:0] DATA_reg;
+	reg [WIDTH - 1 : 0] DATA_reg;
 
 	// register the input
 	always @ (negedge RST or posedge CLK)
@@ -32,7 +32,7 @@ module serializer #(parameter WIDTH = 8) (
 				end
 		end
 
-	// 4 bit counter
+	// 3 bit counter
 	always @ (negedge RST or posedge CLK)
 		begin
 			if (!RST)

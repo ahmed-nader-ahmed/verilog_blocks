@@ -32,7 +32,7 @@ module serializer #(parameter WIDTH = 8) (
 				end
 		end
 
-	// 3 bit counter
+	// $clog2(WIDTH) bit counter
 	always @ (negedge RST or posedge CLK)
 		begin
 			if (!RST)
